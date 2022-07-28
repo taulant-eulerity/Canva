@@ -1,12 +1,15 @@
 import React from 'react'
+import { StyleDisplay, StyleCanvasWrapper } from './style.display'
 
 
 
-const Display = () => {
+const Display = ({canvasRefernence}) => {
   return (
-    <div className='section display'>
-        <h1>Display</h1>
-    </div>
+      <StyleDisplay className='section display'>
+        <StyleCanvasWrapper>
+          <canvas ref={canvasRefernence} width='500px' height='500px'></canvas>
+        </StyleCanvasWrapper>
+    </StyleDisplay>
   )
 }
 

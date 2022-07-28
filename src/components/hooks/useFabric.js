@@ -1,5 +1,6 @@
 import { useRef, useCallback } from "react";
 import { fabric } from "fabric";
+
 const useFabric = (onChange) => {
   const fabricRef = useRef();
   const disposeRef = useRef();
@@ -16,7 +17,7 @@ const useFabric = (onChange) => {
         disposeRef.current = undefined;
       }
     }
-  }, [onChange]);
+  }, []);
 };
 
 export default useFabric;
