@@ -1,12 +1,13 @@
 import React from 'react'
+import { StyleNavigation } from './style.naviagtion'
 
 
 
 const Navigation = () => {
   return (
-    <div className='section navigation'>
+    <StyleNavigation className='section navigation'>
         <h1>Navigation</h1>
-    </div>
+    </StyleNavigation>
   )
 }
 

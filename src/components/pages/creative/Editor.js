@@ -3,13 +3,15 @@ import useFabric from "../../hooks/useFabric";
 import Controller from "./controller";
 import Display from "./display";
 
-import { StyleEditor } from "./editor.styles";
+import { StyleEditor } from "./style.editor";
 import Footer from "./footer/footer";
 import Navigation from "./navigation";
 import Sidebar from "./sidebar";
 
 const Editor = () => {
   const [canvas, setCanavs] = useState(null);
+  const [selectedField, setSelectedField] = useState('text')
+  const [selectedObject, setSelectedObject] = useState(null);
 
   const ref = useFabric((fabricCanvas) => {
     setCanavs(fabricCanvas);
@@ -17,9 +19,9 @@ const Editor = () => {
 
   return (
     <StyleEditor>
-      <Navigation />
-      <Sidebar />
-      <Controller canvas={canvas}/>
+      <Navigation/>
+      <Sidebar setSelectedField={setSelectedField} selectedField={selectedField}/>
+      <Controller canvas={canvas} selectedField={selectedField} setSelectedObject={setSelectedObject} selectedObject={selectedObject} />
       <Display canvasRefernence={ref} />
       <Footer />
     </StyleEditor>

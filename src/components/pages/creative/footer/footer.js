@@ -1,12 +1,13 @@
 import React from 'react'
+import { StyleFooter } from './style.footer'
 
 
 
 const Footer = () => {
   return (
-    <div className='section footer'>
+    <StyleFooter className='section footer'>
         <h1>Footer</h1>
-    </div>
+    </StyleFooter>
   )
 }
 
