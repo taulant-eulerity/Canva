@@ -4,6 +4,7 @@ import { StyleDisplay, StyleCanvasWrapper } from './style.display'
 
 
 const Display = ({canvasRefernence}) => {
+
   return (
       <StyleDisplay className='section display'>
         <StyleCanvasWrapper>

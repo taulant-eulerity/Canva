@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 
 export const StyleController = styled.div`
-    border-right: 1px solid grey;
-    border-bottom: 1px solid grey;
+   padding: 0.5rem;
+  
+   border: 2px solid #F5F4F4;
+   border-top: none;
 
 `

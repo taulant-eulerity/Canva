@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useFabric from "../../hooks/useFabric";
 import Controller from "./controller";
 import Display from "./display";
@@ -19,9 +19,9 @@ const Editor = () => {
 
   return (
     <StyleEditor>
-      <Navigation/>
+      <Navigation selectedObject={selectedObject} canvas={canvas} setSelectedField={setSelectedField}/>
       <Sidebar setSelectedField={setSelectedField} selectedField={selectedField}/>
-      <Controller canvas={canvas} selectedField={selectedField} setSelectedObject={setSelectedObject} selectedObject={selectedObject} />
+      <Controller canvas={canvas} selectedField={selectedField} setSelectedField={setSelectedField} setSelectedObject={setSelectedObject} selectedObject={selectedObject} />
       <Display canvasRefernence={ref} />
       <Footer />
     </StyleEditor>
