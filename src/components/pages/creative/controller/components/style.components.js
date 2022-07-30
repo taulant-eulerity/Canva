@@ -17,7 +17,34 @@ export const StyleImageWrapper = styled.div`
    display: grid;
    place-items: center;
    position: relative;
+   transition: all 0.2s;
+   cursor: pointer;
     img {
         border-radius: 0.5rem;
     }
+    :hover {
+        transform: scale(1.08);
+    }
 `
+
+
+export const StyleTemplates = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .image-wrapper {
+        margin-top: 2rem;
+    }
+    .text-wrapper {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+`
+
+export const StyleText = styled.div``
+
+export const StyleCustomize = styled.div``

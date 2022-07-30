@@ -6,6 +6,8 @@ import  Text  from "./components/Text";
 import  Images  from "./components/Images";
 import { animateOnSelect } from "../../../util/gsap";
 import ImageFilters from "./components/ImageFilters";
+import Templates from "./components/Templates";
+import Customize from "./components/Customize";
 const Controller = ({ canvas, selectedField, setSelectedObject, selectedObject, setSelectedField }) => {
 
 
@@ -32,13 +34,13 @@ const Controller = ({ canvas, selectedField, setSelectedObject, selectedObject, 
   }, [canvas]);
 
 
-
- 
   const Component = () => {
     switch(selectedField) {
       case 'text': return <Text canvas={canvas} />
       case 'images': return <Images  canvas={canvas}/>
       case 'image:filters': return <ImageFilters  canvas={canvas}/>
+      case 'templates': return <Templates canvas={canvas}/>
+      case 'customize': return <Customize canvas={canvas}/>
       default: return <Text selectedObject={selectedObject} canvas={canvas} />
     }
   }

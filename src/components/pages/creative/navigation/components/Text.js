@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import ColorPicker from "../../../../reusableUI/buttons/colorPicker";
 import Increment from "../../../../reusableUI/buttons/increment";
 import { Remove } from "../../../../reusableUI/buttons/remove";
+import Transparent from "../../../../reusableUI/buttons/transparent";
+import UpIndex from "../../../../reusableUI/buttons/UpIndex";
 import { StyleNavigationComponents } from "./style.components";
 
 const NavigationText = ({ canvas }) => {
@@ -36,25 +38,20 @@ const NavigationText = ({ canvas }) => {
     canvas.renderAll();
   }, [backgroundColor, canvas])
 
-
-
-
   return (
     <StyleNavigationComponents>
       <Increment setValue={setFontSize} value={fontSize} />
-      <ColorPicker setValue={setColor} value={color} title={'Font Color'} letter/>
-      <ColorPicker setValue={setBackgroundColor} value={backgroundColor} title={'Background Color'}/>
-      <Remove canvas={canvas} />
-      <h1 onClick={() => {
-        canvas?.getActiveObject().set("backgroundColor", 'transparent')
-        canvas.renderAll();
-      }}>*T*</h1>
-
-      <h1 onClick={() => {
-        // canvas?.getActiveObject().set("backgroundColor", 'transparent')
-        canvas?.getActiveObject().moveTo(1);
-        canvas.renderAll();
-      }}>*I*</h1>
+      <div className="colors">
+          <ColorPicker setValue={setBackgroundColor} value={backgroundColor} title={'Background Color'}/>
+          <ColorPicker setValue={setColor} value={color} title={'Font Color'}/>
+      </div>
+      <div className="icons">
+        <Remove canvas={canvas} />
+        <Transparent canvas={canvas} />
+        <UpIndex canvas={canvas} />
+      </div>
+    
+  
 
     </StyleNavigationComponents>
   );

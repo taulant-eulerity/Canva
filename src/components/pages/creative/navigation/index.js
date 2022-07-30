@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import NavigationText from './components/Text'
 import NavigationImages from './components/Images'
 import { StyleNavigationComponents } from './components/style.components'

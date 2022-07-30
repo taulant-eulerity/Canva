@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
 export const StyleEditor = styled.div`
+
   display: grid;
   grid-template-rows: repeat(3, min-content);
   grid-template-columns: repeat(2, min-content) 1fr;
-    .section {
-    }
-
+ 
     .navigation {
-        width: 100vw;
+        width: 90vw;
         grid-column: 1 / -1;
         height: 60px;
     }

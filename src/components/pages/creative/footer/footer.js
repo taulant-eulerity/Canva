@@ -6,7 +6,7 @@ import { StyleFooter } from './style.footer'
 const Footer = () => {
   return (
     <StyleFooter className='section footer'>
-        <h1>Footer</h1>
+       
     </StyleFooter>
   )
 }

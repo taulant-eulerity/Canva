@@ -7,4 +7,8 @@ export const PrimaryBtn = styled.div`
     color: white;
     padding: .5rem;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 17rem;
 `

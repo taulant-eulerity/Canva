@@ -19,7 +19,7 @@ export const StyleIconWrapper = styled.div`
     padding: 0.5rem;
     background-color: ${props => props.selected === props.field ? "#DFDFDE" : "#F7F7F7" };
     svg {
-        stroke: ${props => props.selected === props.field ? 'black' : "#DFDFDE"}
+        stroke: ${props => props.selected === props.field ? 'black' : "#a3a0b5"}
     }
 `
 

@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { FiPlus, FiMinus } from "react-icons/fi";
-import { SmParagraph } from "../typography";
+
 
 const StyleIncerement = styled.div`
+   /* width: 70px; */
 
   input {
     border: none;
@@ -20,11 +21,12 @@ const StyleIncerement = styled.div`
   }
   .border-right,
   .border-left {
-    padding: 0.2rem;
+    padding: 0.3rem;
     background-color: white;
     cursor: pointer;
     display: grid;
     place-items: center;
+
 
   }
   .border-right {
@@ -44,7 +46,6 @@ const Increment = ({ setValue, value }) => {
   };
   return (
     <StyleIncerement>
-    <SmParagraph>Font size</SmParagraph>
       <div className="increment-wrapper">
         <div className="border-right" onClick={increment}>
           <FiPlus />

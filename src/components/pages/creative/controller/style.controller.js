@@ -6,5 +6,6 @@ export const StyleController = styled.div`
   
    border: 2px solid #F5F4F4;
    border-top: none;
+   background-color: white;
 
 `
