@@ -4,6 +4,7 @@ import Increment from "../../../../reusableUI/buttons/increment";
 import { Remove } from "../../../../reusableUI/buttons/remove";
 import Transparent from "../../../../reusableUI/buttons/transparent";
 import UpIndex from "../../../../reusableUI/buttons/UpIndex";
+import FontPicker from "./FontPicker";
 import { StyleNavigationComponents } from "./style.components";
 
 const NavigationText = ({ canvas }) => {
@@ -40,6 +41,7 @@ const NavigationText = ({ canvas }) => {
 
   return (
     <StyleNavigationComponents>
+      <FontPicker canvas={canvas} />
       <Increment setValue={setFontSize} value={fontSize} />
       <div className="colors">
           <ColorPicker setValue={setBackgroundColor} value={backgroundColor} title={'Background Color'}/>
@@ -50,8 +52,6 @@ const NavigationText = ({ canvas }) => {
         <Transparent canvas={canvas} />
         <UpIndex canvas={canvas} />
       </div>
-    
-  
 
     </StyleNavigationComponents>
   );

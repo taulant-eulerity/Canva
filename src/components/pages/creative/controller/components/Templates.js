@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "../../../../modal";
 import { PrimaryBtn } from "../../../../reusableUI/buttons/buttons.style";
 import TextHeader from "../../../../reusableUI/TextHeader";
 
@@ -6,11 +7,13 @@ import { StyleTemplates } from "./style.components";
 
 
 
-const Templates = () => {
+const Templates = ({canvas}) => {
+    const [isModalOpen, setModalOpen] = useState(false)
     return (
         <StyleTemplates>
+            {isModalOpen && <Modal close={setModalOpen} canvas={canvas}/>}
             <TextHeader text={"Templates"}/>
-            <PrimaryBtn>Create a template</PrimaryBtn>
+            <PrimaryBtn onClick={setModalOpen}>Create a template</PrimaryBtn>
             <div className="image-wrapper">
                 <img src={"https://www.befunky.com/images/illustrations/no-projects-sidebar.svg"} alt={'svg'} />
             </div>

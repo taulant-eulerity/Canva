@@ -48,3 +48,24 @@ export const StyleTemplates = styled.div`
 export const StyleText = styled.div``
 
 export const StyleCustomize = styled.div``
+
+
+
+//SUB
+export const StyleContent = styled.div`
+  display: grid;
+  row-gap: 1rem;
+  .contents {
+    padding: 0.5rem;
+    border: 1px solid #DFDFDE;
+    background-color: #F1F1F1;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    :hover {
+        background-color: #3a36e4;
+        color: white
+    }
+  }
+`

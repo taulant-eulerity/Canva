@@ -23,7 +23,8 @@ const Controller = ({ canvas, selectedField, setSelectedObject, selectedObject, 
     });
     canvas.on('mouse:up', (event) => {
       setSelectedObject(event.target)
-
+      canvas.preserveObjectStacking = true;
+      console.log('Hey')
       if(!canvas.getActiveObject()) setSelectedField('text')
     });
     return () => {
@@ -41,6 +42,7 @@ const Controller = ({ canvas, selectedField, setSelectedObject, selectedObject, 
       case 'image:filters': return <ImageFilters  canvas={canvas}/>
       case 'templates': return <Templates canvas={canvas}/>
       case 'customize': return <Customize canvas={canvas}/>
+      case 'shapes': return <h1>Hello</h1>
       default: return <Text selectedObject={selectedObject} canvas={canvas} />
     }
   }
