@@ -49,7 +49,7 @@ const Images = ({ canvas }) => {
     fabric.Image.fromURL(
       imgUrl,
       (img) => {
-        canvas.add(img);
+        canvas.add(img).setActiveObject(img);
         img.scale(0.2);
         canvas.centerObject(img);
         canvas.renderAll();
@@ -57,7 +57,7 @@ const Images = ({ canvas }) => {
       { crossOrigin: "Anonymous" }
     );
   };
-
+ 
   return (
     <div>
       <TextHeader text={"Images"} />

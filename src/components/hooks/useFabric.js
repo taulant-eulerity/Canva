@@ -6,7 +6,9 @@ const useFabric = (onChange) => {
   const disposeRef = useRef();
   return useCallback((node) => {
     if (node) {
-      fabricRef.current = new fabric.Canvas(node);
+      fabricRef.current = new fabric.Canvas(node, {
+        backgroundColor: 'white'
+      });
       if (onChange) {
         disposeRef.current = onChange(fabricRef.current);
       }

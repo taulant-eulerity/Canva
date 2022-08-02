@@ -13,7 +13,7 @@ const Ilustrations = ({ canvas }) => {
         svg.top = 50;
         svg.scaleToWidth(100);
         svg.scaleToHeight(100);
-        canvas.add(svg);
+        canvas.add(svg).setActiveObject(svg);
         canvas.renderAll();
     });
   }

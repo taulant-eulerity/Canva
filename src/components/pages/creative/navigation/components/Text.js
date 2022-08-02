@@ -7,7 +7,7 @@ import UpIndex from "../../../../reusableUI/buttons/UpIndex";
 import FontPicker from "./FontPicker";
 import { StyleNavigationComponents } from "./style.components";
 
-const NavigationText = ({ canvas }) => {
+const NavigationText = ({ canvas, animation }) => {
 
   const [fontSize, setFontSize] = useState(canvas?.getActiveObject()?.fontSize || 12);
   const [color, setColor] = useState(canvas?.getActiveObject()?.fill || 'black');
@@ -48,7 +48,7 @@ const NavigationText = ({ canvas }) => {
           <ColorPicker setValue={setColor} value={color} title={'Font Color'}/>
       </div>
       <div className="icons">
-        <Remove canvas={canvas} />
+        <Remove canvas={canvas} animation={animation} />
         <Transparent canvas={canvas} />
         <UpIndex canvas={canvas} />
       </div>

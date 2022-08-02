@@ -17,7 +17,12 @@ const Graphics = ({ canvas }) => {
         var url = URL.createObjectURL(e.target.files[0]);
         fabric.loadSVGFromURL(url, function(objects, options) {
             var svg = fabric.util.groupSVGElements(objects, options);
-            canvas.add(svg).renderAll();
+            canvas.add(svg).setActiveObject(svg)
+            svg.left = 50;
+            svg.top = 50;
+            svg.scaleToWidth(100);
+            svg.scaleToHeight(100);
+            canvas.renderAll();
         });
      }
 

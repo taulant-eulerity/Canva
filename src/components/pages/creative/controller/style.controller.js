@@ -7,5 +7,5 @@ export const StyleController = styled.div`
    border-top: none;
    background-color: white;
    overflow: scroll;
-   height: 39.5rem;
+   min-height: 39.5rem;
 `

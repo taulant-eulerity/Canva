@@ -4,7 +4,7 @@ import { StyleImages, StyleImageWrapper } from "../style.components";
 import { fabric } from "fabric";
 
 const SVGLogos = ({ canvas }) => {
-  const logos = ["https://eulerity-svg.s3.amazonaws.com/cocacola.svg", "https://eulerity-svg.s3.amazonaws.com/facebook.svg", "https://eulerity-svg.s3.amazonaws.com/google.svg", "https://eulerity-svg.s3.amazonaws.com/instagram.svg", "https://eulerity-svg.s3.amazonaws.com/pinterest.svg",];
+  const logos = ["https://eulerity-svg.s3.amazonaws.com/cocacola.svg", "https://eulerity-svg.s3.amazonaws.com/facebook.svg", "https://eulerity-svg.s3.amazonaws.com/google.svg", "https://eulerity-svg.s3.amazonaws.com/instagram.svg", "https://eulerity-svg.s3.amazonaws.com/pinterest.svg","https://eulerity-svg.s3.amazonaws.com/flyio.svg"];
  const loadRef = useRef(0)
  const [loader, setLoader] = useState(true)
   function handleSVG(img) {
@@ -14,7 +14,7 @@ const SVGLogos = ({ canvas }) => {
       svg.top = 50;
       svg.scaleToWidth(100);
       svg.scaleToHeight(100);
-      canvas.add(svg);
+      canvas.add(svg).setActiveObject(svg);;
       canvas.renderAll();
     });
   }

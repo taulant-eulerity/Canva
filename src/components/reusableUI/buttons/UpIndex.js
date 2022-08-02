@@ -12,7 +12,7 @@ export const UpIndex = ({canvas}) => {
     return (
         <StyleUpIndex>
             <BiLayerPlus size='24' color='#3C415C' onClick={() => {
-                  canvas?.getActiveObject().moveTo(1);
+                  canvas?.getActiveObject().moveTo(canvas.getObjects().length);
                   canvas.renderAll();
             }}/>
         </StyleUpIndex>
