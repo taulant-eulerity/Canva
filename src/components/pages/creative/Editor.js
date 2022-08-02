@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import useFabric from "../../hooks/useFabric";
 import Controller from "./controller";
 import Display from "./display";

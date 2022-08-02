@@ -8,13 +8,22 @@ import { StyleNavigation } from './style.naviagtion'
 
 const Navigation = ({selectedObject, canvas, setSelectedField}) => {
 
-  const Component = () => {
-    if(selectedObject?.text) return <NavigationText selectedObject={selectedObject} canvas={canvas} />
-    else return <NavigationImages selectedObject={selectedObject} canvas={canvas} setSelectedField={setSelectedField}  />
-  }
+  function ObjectSelected(){
+
+    let activeObject = canvas?.getActiveObject();
+    if(activeObject.isType('text')){
+       return <NavigationText selectedObject={selectedObject} canvas={canvas} />
+    }
+    else if(activeObject.isType('image')){
+      <NavigationImages selectedObject={selectedObject} canvas={canvas} setSelectedField={setSelectedField}  />
+    }
+    else if( activeObject.isType('xyz')){
+      <h1>Hello</h1>
+    }
+}
   return (
     <StyleNavigation className='section navigation'>
-      { selectedObject ? Component() : <StyleNavigationComponents /> }
+      { canvas.getActiveObject() ? ObjectSelected() : <StyleNavigationComponents /> }
     </StyleNavigation>
   )
 }

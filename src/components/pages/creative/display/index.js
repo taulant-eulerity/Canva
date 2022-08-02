@@ -9,9 +9,9 @@ const Display = ({canvasRefernence}) => {
   return (
       <StyleDisplay className='section display'>
         <StyleCanvasWrapper>
-          <div style={{backgroundColor: 'white'}}>
-          {/* <canvas width='700px' height='700px' class="upper-canvas"></canvas> */}
+          <div className='canvas-wrapper' style={{backgroundColor: 'white'}}>
           <canvas className="lower-canvas" ref={canvasRefernence} width='500px' height='500px'></canvas>
+          {/* <canvas className="uppcanvas"></canvas> */}
           </div>
         </StyleCanvasWrapper>
     </StyleDisplay>

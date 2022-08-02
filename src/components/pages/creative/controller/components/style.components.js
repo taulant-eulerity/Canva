@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled  from "styled-components";
 
 
 export const StyleImages = styled.div`
@@ -13,7 +13,9 @@ export const StyleImages = styled.div`
 
 export const StyleImageWrapper = styled.div`
    border-radius: 10px;
-   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+   box-shadow: ${props => props.box ? 'none' : 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;'};
+   border:     ${props => !props.box ? 'none' : '2px solid #F1F1F1'};
    display: grid;
    place-items: center;
    position: relative;
@@ -68,4 +70,9 @@ export const StyleContent = styled.div`
         color: white
     }
   }
+`
+
+
+export const StyleGraphics = styled.div`
+
 `
