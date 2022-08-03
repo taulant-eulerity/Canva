@@ -38,8 +38,6 @@ const NavigationText = ({ canvas, animation }) => {
 
 
   useEffect(() => {
-    // let rgba = hexToRgbA(backgroundColor)
-    // console.log(rgba)
     canvas?.getActiveObject().set("backgroundColor", backgroundColor )
     canvas.renderAll();
   }, [backgroundColor, canvas])
@@ -49,8 +47,8 @@ const NavigationText = ({ canvas, animation }) => {
       <FontPicker canvas={canvas} />
       <Increment setValue={setFontSize} value={fontSize} />
       <div className="colors">
-          <ColorPicker setValue={setBackgroundColor} value={backgroundColor} title={'Background Color'}/>
-          <ColorPicker setValue={setColor} value={color} title={'Font Color'}/>
+          <ColorPicker setValue={setBackgroundColor} value={backgroundColor} title={'Background Color'} canvas={canvas}/>
+          <ColorPicker setValue={setColor} value={color} title={'Font Color'} canvas={canvas} isFont={true}/>
       </div>
       <div className="icons">
         <Remove canvas={canvas} animation={animation} />

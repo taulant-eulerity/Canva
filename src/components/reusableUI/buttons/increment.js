@@ -50,7 +50,7 @@ const Increment = ({ setValue, value }) => {
         <div className="border-right" onClick={increment}>
           <FiPlus />
         </div>
-        <input maxLength={70} value={value} />
+        <input maxLength={70} value={value} onChange={()=>{}} />
         <div className="border-left" onClick={decrement}>
           <FiMinus />
         </div>

@@ -117,8 +117,8 @@ function addEventsDragAndDrop(el) {
             obj.index = index
           if (obj.type === "image") {
             return (
-              <StyleElements  id={index} className="draggable" draggable={true}  onClick={() => handleOnClick(obj)}>
-                <CgImage style={{marginRight: '0.5rem'}} size='23'  color='#3C415C'/> 
+              <StyleElements key={index}  id={index} className="draggable" draggable={true}  onClick={() => handleOnClick(obj)}>
+                <CgImage style={{marginRight: '0.5rem'}} size='23'  color='#3C415C'/>
                 <img
                   style={{borderRadius: '4px'}}
                   height={"30px"}
@@ -129,10 +129,10 @@ function addEventsDragAndDrop(el) {
             );
           }
           if (obj.type === "textbox") {
-            return <StyleElements id={index} className="draggable" draggable={true} onClick={() => handleOnClick(obj)}> <CgFormatText style={{marginRight: '0.5rem'}} size='25'  color='#3C415C'/> {obj.text.length > 20 ? obj.text.slice(0, 20) + "..." : obj.text}</StyleElements> ;
+            return <StyleElements key={index} id={index} className="draggable" draggable={true} onClick={() => handleOnClick(obj)}> <CgFormatText style={{marginRight: '0.5rem'}} size='25'  color='#3C415C'/> {obj.text.length > 20 ? obj.text.slice(0, 20) + "..." : obj.text}</StyleElements> ;
           }
         //   if (obj.type === "group") {
-            return <StyleElements id={index} className="draggable" draggable={true} onClick={() => handleOnClick(obj)}><FiPenTool size='22' style={{marginRight: '0.5rem'}}  color='#3C415C' /> SVG</StyleElements> ;
+            return <StyleElements key={index} id={index} className="draggable" draggable={true} onClick={() => handleOnClick(obj)}><FiPenTool size='22' style={{marginRight: '0.5rem'}}  color='#3C415C' />SVG</StyleElements> ;
         //   }
         })}
       </StyleLayersOrder>

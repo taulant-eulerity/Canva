@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { getLastValue } from "../../util/util";
 
 export const Slider = ({ canvas }) => {
   const [slider, setSlider] = useState(1);
 
-  const getLastValue = (rgba) => {
-    if (rgba) {
-      return rgba.split("(").join(",").split(")").join(",").split(",").slice(1, -1);
-    }
-  };
-
+ 
 
   useEffect(() => {
     let rgba = canvas?.getActiveObject()?.backgroundColor;

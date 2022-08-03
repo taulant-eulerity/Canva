@@ -19,9 +19,13 @@ const Editor = () => {
   });
 
   let [animation, setAnimation] = useState({})
-
+  console.log(canvas)
   useEffect(() => {
     if (!canvas) return;
+
+
+
+
     fabric.Object.prototype.objectCaching = false;
     canvas.on("object:added", (event) => {
       setNavigation(event)

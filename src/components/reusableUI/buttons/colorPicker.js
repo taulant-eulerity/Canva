@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { hexToRgbA } from "../../pages/creative/controller/controller.util";
+import { getLastValue } from "../../util/util";
 
 const StyleColorPicker = styled.div`
   .color-wrapper {
@@ -11,13 +12,28 @@ const StyleColorPicker = styled.div`
   }
 `;
 
-const ColorPicker = ({ setValue, value }) => {
+const ColorPicker = ({ setValue, value, canvas, isFont }) => {
   const ref = useRef();
+  const currentOpacity = useRef()
+
+
   const handleOnClick = () => {
     ref.current.click();
+    currentOpacity.current = canvas?.getActiveObject()
   };
   const handleOnChange = (e) => {
-    setValue(hexToRgbA(e.target.value));
+
+    if(isFont) {
+      setValue(hexToRgbA(e.target.value));
+      return
+    }
+
+    let opacity  = getLastValue(currentOpacity.current.backgroundColor)
+    let updatedColor = getLastValue(hexToRgbA(e.target.value))
+
+    if(!opacity) return setValue(hexToRgbA(e.target.value));
+    updatedColor[updatedColor.length-1] = opacity[opacity.length-1]
+    setValue(`rgba(${updatedColor.join(",")})`);
   };
 
   return (

@@ -4,7 +4,7 @@ import { StyleImages, StyleImageWrapper } from "../style.components";
 import { fabric } from "fabric";
 
 const Ilustrations = ({ canvas }) => {
-  const ilustrations = ["https://eulerity-svg.s3.amazonaws.com/success.svg", "https://eulerity-svg.s3.amazonaws.com/business-launch.svg", "https://eulerity-svg.s3.amazonaws.com/business-way-to-success.svg","https://eulerity-svg.s3.amazonaws.com/character.svg"];
+  const ilustrations = ["https://eulerity-svg.s3.amazonaws.com/success.svg", "https://eulerity-svg.s3.amazonaws.com/business-launch.svg", "https://eulerity-svg.s3.amazonaws.com/business-way-to-success.svg","https://eulerity-svg.s3.amazonaws.com/character.svg", "https://eulerity-svg.s3.amazonaws.com/stripe.svg"];
 
   function handleSVG(img) {
     fabric.loadSVGFromURL(img, function (objects, options) {

@@ -5,6 +5,7 @@ import { PrimaryBtn } from "../../../../reusableUI/buttons/buttons.style";
 import { FiUpload } from "react-icons/fi";
 import TextHeader from "../../../../reusableUI/TextHeader";
 let images = [
+  "https://images.unsplash.com/photo-1656444699089-bab3ba14aefc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
   "https://thumbs.dreamstime.com/b/berry-pie-20808479.jpg",
   "https://knowledgenuts.com/wp-content/uploads/2020/12/f5046c1ebb5cee8368c0fd724b527465.jpeg",
   "https://t3.ftcdn.net/jpg/04/71/96/02/240_F_471960206_um24q8MnMVNXVccOWLS49Nhl6LsqavRD.jpg",
@@ -36,7 +37,7 @@ const DisplayImage = ({ images, addImage }) => {
         return (
           <StyleImageWrapper key={img}>
             <div className="overlay" loader={loader} />
-            <img ref={ref} onClick={() => addImage(img)} width={"100px"} src={img} alt="fruit" />
+            <img ref={ref} onClick={() => addImage(img)} src={img} alt="fruit" />
           </StyleImageWrapper>
         );
       })}
