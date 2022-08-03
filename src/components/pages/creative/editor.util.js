@@ -1,6 +1,5 @@
 export const handleNavigation = (event, AObject) => {
-    const activeObject = AObject ? AObject : event.target
-    console.log(activeObject?.type)
+    const activeObject = AObject ? AObject : event?.target
     switch(activeObject?.type) {
       case 'textbox': return 'textbox'
       case 'image': return 'image'

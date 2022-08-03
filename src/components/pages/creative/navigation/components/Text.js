@@ -4,6 +4,9 @@ import Increment from "../../../../reusableUI/buttons/increment";
 import { Remove } from "../../../../reusableUI/buttons/remove";
 import Transparent from "../../../../reusableUI/buttons/transparent";
 import UpIndex from "../../../../reusableUI/buttons/UpIndex";
+import { Slider } from "../../../../reusableUI/slider";
+
+
 import FontPicker from "./FontPicker";
 import { StyleNavigationComponents } from "./style.components";
 
@@ -11,7 +14,8 @@ const NavigationText = ({ canvas, animation }) => {
 
   const [fontSize, setFontSize] = useState(canvas?.getActiveObject()?.fontSize || 12);
   const [color, setColor] = useState(canvas?.getActiveObject()?.fill || 'black');
-  const [backgroundColor, setBackgroundColor] = useState(canvas?.getActiveObject()?.backgroundColor || 'white');
+  const [backgroundColor, setBackgroundColor] = useState(canvas?.getActiveObject()?.backgroundColor);
+
 
   useEffect(() => {
     setFontSize(canvas?.getActiveObject()?.fontSize);
@@ -20,7 +24,6 @@ const NavigationText = ({ canvas, animation }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [canvas?.getActiveObject()]);
-
 
 
   useEffect(() => {
@@ -35,7 +38,9 @@ const NavigationText = ({ canvas, animation }) => {
 
 
   useEffect(() => {
-    canvas?.getActiveObject().set("backgroundColor", backgroundColor)
+    // let rgba = hexToRgbA(backgroundColor)
+    // console.log(rgba)
+    canvas?.getActiveObject().set("backgroundColor", backgroundColor )
     canvas.renderAll();
   }, [backgroundColor, canvas])
 
@@ -52,7 +57,7 @@ const NavigationText = ({ canvas, animation }) => {
         <Transparent canvas={canvas} />
         <UpIndex canvas={canvas} />
       </div>
-
+      <Slider canvas={canvas} />
     </StyleNavigationComponents>
   );
 };

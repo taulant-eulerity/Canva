@@ -15,6 +15,7 @@ const SVGLogos = ({ canvas }) => {
       svg.scaleToWidth(100);
       svg.scaleToHeight(100);
       canvas.add(svg).setActiveObject(svg);;
+      canvas.centerObject(svg);
       canvas.renderAll();
     });
   }

@@ -42,6 +42,7 @@ const Text = ({ canvas }) => {
             fill: "black",
             fontFamily: "Arial",
             textAlign: "center",
+            backgroundColor: 'rgba(255,255,255,1)'
           });
           // textBox.set('backgroundColor', 'rgb(255,255,255)')
           // textBox.set('backgroundColor', 'rgba(0,200,0, 0.4)');

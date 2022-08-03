@@ -1,4 +1,4 @@
-import React, { createElement } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import NavigationText from "./components/Text";
 import NavigationImages from "./components/Images";
 import { StyleNavigationComponents } from "./components/style.components";
@@ -6,38 +6,36 @@ import { StyleNavigationComponents } from "./components/style.components";
 
 import { StyleNavigation } from "./style.naviagtion";
 import { PrimaryBtn } from "../../../reusableUI/buttons/buttons.style";
+import { handleNavigation } from "../editor.util";
 
 const handleDownload = ( canvas) => {
   canvas.discardActiveObject()
   canvas.renderAll()
   canvas.getElement().style.backgroundColor ="white"
-  console.log(  canvas.getElement())
   canvas.getElement().toBlob(function(blob) {
-    const bl = URL.createObjectURL(blob)
+    const blobURL = URL.createObjectURL(blob)
     let a = document.createElement('a')
-    a.id = 'mana'
-    a.href = bl
-    console.log(a)
+    a.href = blobURL
     a.download = 'canvas.jpeg'
     a.click()
   });
-
-
-
 }
-//     let a = document.createElement('a')
-//     a.href = canvas.toDataURL({
-//         format: 'png',
-//         quality: 0.8
-//     });
 
-//     console.log(a)
-//     a.download = 'canvas.png'
-// }
+
+
 
 
 const Navigation = ({ canvas, navigation, setSelectedField, animation }) => {
-  function ObjectSelected() {
+const [Component, setState] = useState(<></>)
+
+
+useEffect(() => {
+  setState(() => ObjectSelected.bind(null, navigation?.target ?  handleNavigation(navigation, null) : handleNavigation(null, navigation)))
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [navigation])
+
+
+  function ObjectSelected(navigation) {
     switch (navigation) {
       case "textbox":
         return <NavigationText canvas={canvas} animation={animation} />;
@@ -55,14 +53,9 @@ const Navigation = ({ canvas, navigation, setSelectedField, animation }) => {
         </div>
       )}
 
-      {canvas?.getActiveObject() ? ObjectSelected() : <StyleNavigationComponents />}
+      {canvas?.getActiveObject() ? <Component />: <StyleNavigationComponents />}
     </StyleNavigation>
   );
 };
 
 export default Navigation;
-
-// canvas.toDataURL({
-//   format: 'jpeg',
-//   quality: 0.8
-// });

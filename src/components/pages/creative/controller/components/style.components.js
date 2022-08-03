@@ -9,6 +9,8 @@ export const StyleImages = styled.div`
     padding: 20px;
     border-radius: 0.5rem;
     justify-content: center;
+    overflow: scroll;
+    max-height: 13rem;
 `
 
 export const StyleImageWrapper = styled.div`

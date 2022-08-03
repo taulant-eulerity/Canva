@@ -13,7 +13,6 @@ export const Remove = ({canvas, animation}) => {
                 setTimeout(() => {
                     canvas.remove(canvas?.getActiveObject())
                 },100)
-                animation?.reverse()
             }}/>
         </StyleRemove>
     )

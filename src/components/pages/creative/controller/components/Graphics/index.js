@@ -22,6 +22,7 @@ const Graphics = ({ canvas }) => {
             svg.top = 50;
             svg.scaleToWidth(100);
             svg.scaleToHeight(100);
+            canvas.centerObject(svg);
             canvas.renderAll();
         });
      }

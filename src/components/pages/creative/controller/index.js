@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useLayoutEffect } from "react";
 
 import { StyleController } from "./style.controller";
 
@@ -9,7 +9,7 @@ import ImageFilters from "./components/ImageFilters";
 import Templates from "./components/Templates";
 import Customize from "./components/Customize";
 import Graphics from "./components/Graphics";
-const Controller = ({ canvas, selectedField, setSelectedObject, selectedObject, setSelectedField }) => {
+const Controller = ({ canvas, selectedField }) => {
 
 
   useLayoutEffect(() => {
@@ -25,7 +25,7 @@ const Controller = ({ canvas, selectedField, setSelectedObject, selectedObject, 
       case 'templates': return <Templates canvas={canvas}/>
       case 'customize': return <Customize canvas={canvas}/>
       case 'graphics': return <Graphics canvas={canvas} />
-      default: return <Text selectedObject={selectedObject} canvas={canvas} />
+      default: return <Text canvas={canvas} />
     }
   }
   return (

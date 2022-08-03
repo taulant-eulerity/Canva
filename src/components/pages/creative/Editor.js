@@ -20,32 +20,46 @@ const Editor = () => {
 
   let [animation, setAnimation] = useState({})
 
-
-
   useEffect(() => {
     if (!canvas) return;
     fabric.Object.prototype.objectCaching = false;
     canvas.on("object:added", (event) => {
-      setNavigation(handleNavigation(event, null))
+      setNavigation(event)
       animation?.reverse?.();
     });
-    canvas.on('mouse:up', (event,) => {
+
+
+    canvas.on('mouse:up', (event) => {
       canvas.preserveObjectStacking = true;
-      setNavigation(handleNavigation(event, canvas?.getActiveObject()))
+
+      setNavigation(canvas?.getActiveObject())
       if(!canvas.getActiveObject()) setSelectedField('text')
     });
 
 
+     canvas.on('selection:updated', (event) => {
+      setNavigation(canvas?.getActiveObject())
+     })
+
+    canvas.on('mouse:wheel', function(opt) {
+      var delta = opt.e.deltaY;
+      var zoom = canvas.getZoom();
+      zoom *= 0.999 ** delta;
+      if (zoom > 20) zoom = 20;
+      if (zoom < 0.01) zoom = 0.01;
+      canvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
+      opt.e.preventDefault();
+      opt.e.stopPropagation();
+    });
 
     return () => {
       canvas.off("object:added");
       canvas.off("mouse:up")
-      canvas.off('object:selected')
+      canvas.off('selection:updated')
+      canvas.off('mouse:wheel')
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [canvas]);
-
-
 
   return (
     <StyleEditor>
