@@ -1,10 +1,10 @@
 import React, { useEffect, useLayoutEffect, useRef , useState} from "react";
 import styled from "styled-components";
 import { gsap } from "gsap";
-
+import {useSelector} from 'react-redux'
 const StyleFontPicker = styled.div`
   position: relative;
-  min-width: 120px;
+  min-width: 160px;
   height: 22px;
   border: 1px solid #DFDFDE;
   padding: 0.2rem;
@@ -32,9 +32,10 @@ const StyleHiddenFontPicker = styled.div`
   background-color: white;
   /* border: 1px solid #DFDFDE; */
   border-radius: 5px;
-  opacity: 0;
-  visibility: "hidden";
+  /* opacity: 0;
+  visibility: hidden; */
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
 
   .style-fonts {
     width: 80%;
@@ -46,7 +47,6 @@ const StyleHiddenFontPicker = styled.div`
   .each-font {
     height: 30px;
     width: 100%;
-    transition: all 0.4s;
     display: flex;
     align-items: center;
     .p {
@@ -55,18 +55,19 @@ const StyleHiddenFontPicker = styled.div`
     :hover {
         background-color: #3a36e4;
         color: white;
-  
     }
   }
 `;
 
-const FontPicker = ({canvas}) => {
+const FontPicker = () => {
+  const [animation, setAnimation] = useState(null)
   const ref = useRef();
   const fontList = ['Arial', 'Roboto','Poppins','Square Peg','Mochiy Pop One','Signika Negative','Exo 2','Edu VIC WA NT Beginner']
   const [fontFamily, setCurrentFont] = useState(null)
+  const canvas = useSelector(state => state.canvas.canvas)
     useEffect(() => {
-        const obj = canvas.getActiveObject()
-        setCurrentFont(obj.fontFamily)
+        const obj = canvas?.getActiveObject()
+        setCurrentFont(obj?.fontFamily)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[canvas?.getActiveObject()])
 
@@ -76,17 +77,15 @@ const FontPicker = ({canvas}) => {
         setCurrentFont(obj.fontFamily)
         canvas.renderAll();
     }
-
-
         useLayoutEffect(() => {
-            onMouseLeave()
+          setAnimation(gsap.timeline().fromTo(".animate", {opacity: 0, autoAlpha: 0, duration: 0.1}, {opacity: 1,autoAlpha: 1, duration: 0.1}).pause())
         },[])
 
     const onMouseEnter = () => {
-        gsap.to(".animate", { opacity: 1, visibility: "visible", duration: 0.2 })
+      animation.play()
     }
     const onMouseLeave = () => {
-        gsap.to(".animate", { opacity: 0, visibility: "hidden" })
+      animation.reverse()
     }
 
   return (

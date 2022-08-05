@@ -4,6 +4,9 @@ import { fabric } from "fabric";
 import { PrimaryBtn } from "../../../../reusableUI/buttons/buttons.style";
 import { FiUpload } from "react-icons/fi";
 import TextHeader from "../../../../reusableUI/TextHeader";
+import { HiddenInput } from "../../../../reusableUI/HiddenInput";
+import {useSelector} from 'react-redux'
+import uniqid from 'uniqid'
 let images = [
   "https://images.unsplash.com/photo-1656444699089-bab3ba14aefc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
   "https://thumbs.dreamstime.com/b/berry-pie-20808479.jpg",
@@ -45,24 +48,47 @@ const DisplayImage = ({ images, addImage }) => {
   );
 };
 
-const Images = ({ canvas }) => {
+const Images = () => {
+
+const canvas = useSelector(state => state.canvas.canvas)
+  const ref = useRef();
   const addImage = (imgUrl) => {
     fabric.Image.fromURL(
       imgUrl,
       (img) => {
+        img.id = uniqid()
         canvas.add(img).setActiveObject(img);
-        img.scale(0.2);
+
         canvas.centerObject(img);
         canvas.renderAll();
       },
       { crossOrigin: "Anonymous" }
     );
   };
- 
+  const handleOnChange = (e) => {
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      const imgObj = new Image();
+      imgObj.src = event.target.result;
+      imgObj.onload = () => {
+        var image = new fabric.Image(imgObj);
+        image.id = uniqid()
+        image.scale(0.2);
+        canvas.centerObject(image);
+        canvas.add(image).setActiveObject(image);
+        canvas.renderAll();
+      };
+    };
+
+    reader.readAsDataURL(e.target.files[0]);
+  };
+
   return (
     <div>
+      <HiddenInput reference={ref} onChange={handleOnChange} />
       <TextHeader text={"Images"} />
-      <PrimaryBtn>
+      <PrimaryBtn onClick={() => ref.current.click()}>
         <FiUpload size="20" /> Upload
       </PrimaryBtn>
       <StyleImages>

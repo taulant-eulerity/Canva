@@ -1,61 +1,33 @@
 import React, { useEffect, useState } from "react";
-import ColorPicker from "../../../../reusableUI/buttons/colorPicker";
-import Increment from "../../../../reusableUI/buttons/increment";
-import { Remove } from "../../../../reusableUI/buttons/remove";
-import Transparent from "../../../../reusableUI/buttons/transparent";
-import UpIndex from "../../../../reusableUI/buttons/UpIndex";
-import { Slider } from "../../../../reusableUI/slider";
 
+import Increment from "../../../../reusableUI/buttons/increment";
+import {useSelector} from 'react-redux'
 
 import FontPicker from "./FontPicker";
 import { StyleNavigationComponents } from "./style.components";
 
-const NavigationText = ({ canvas, animation }) => {
-
+const NavigationText = () => {
+  const canvas = useSelector(state => state.canvas.canvas)
   const [fontSize, setFontSize] = useState(canvas?.getActiveObject()?.fontSize || 12);
-  const [color, setColor] = useState(canvas?.getActiveObject()?.fill || 'black');
-  const [backgroundColor, setBackgroundColor] = useState(canvas?.getActiveObject()?.backgroundColor);
-
-
+  const navigation = useSelector(state => state.navigation.navigate)
   useEffect(() => {
     setFontSize(canvas?.getActiveObject()?.fontSize);
-    setColor(canvas?.getActiveObject()?.fill)
-    setBackgroundColor(canvas?.getActiveObject()?.backgroundColor)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [canvas?.getActiveObject()]);
 
+
+    console.log(canvas?.getActiveObject()?.fontSize)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [canvas?.getActiveObject(), navigation.id]);
 
   useEffect(() => {
     canvas?.getActiveObject().set("fontSize", fontSize);
-    canvas.renderAll();
+    canvas?.renderAll();
   }, [fontSize, canvas ]);
-
-  useEffect(() => {
-    canvas?.getActiveObject().set("fill", color)
-    canvas.renderAll();
-  }, [color, canvas])
-
-
-  useEffect(() => {
-    canvas?.getActiveObject().set("backgroundColor", backgroundColor )
-    canvas.renderAll();
-  }, [backgroundColor, canvas])
 
   return (
     <StyleNavigationComponents>
-      <FontPicker canvas={canvas} />
+      <FontPicker />
       <Increment setValue={setFontSize} value={fontSize} />
-      <div className="colors">
-          <ColorPicker setValue={setBackgroundColor} value={backgroundColor} title={'Background Color'} canvas={canvas}/>
-          <ColorPicker setValue={setColor} value={color} title={'Font Color'} canvas={canvas} isFont={true}/>
-      </div>
-      <div className="icons">
-        <Remove canvas={canvas} animation={animation} />
-        <Transparent canvas={canvas} />
-        <UpIndex canvas={canvas} />
-      </div>
-      <Slider canvas={canvas} />
     </StyleNavigationComponents>
   );
 };

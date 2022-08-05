@@ -1,12 +1,11 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavigationText from "./components/Text";
 import NavigationImages from "./components/Images";
 import { StyleNavigationComponents } from "./components/style.components";
-
+import {useSelector} from 'react-redux'
 
 import { StyleNavigation } from "./style.naviagtion";
 import { PrimaryBtn } from "../../../reusableUI/buttons/buttons.style";
-import { handleNavigation } from "../editor.util";
 
 const handleDownload = ( canvas) => {
   canvas.discardActiveObject()
@@ -22,25 +21,25 @@ const handleDownload = ( canvas) => {
 }
 
 
-
-
-
-const Navigation = ({ canvas, navigation, setSelectedField, animation }) => {
+const Navigation = ({setSelectedField, animation }) => {
+const canvas = useSelector(state => state.canvas.canvas)
 const [Component, setState] = useState(<></>)
+const navigation = useSelector(state => state.navigation.navigate)
 
 
 useEffect(() => {
-  setState(() => ObjectSelected.bind(null, navigation?.target ?  handleNavigation(navigation, null) : handleNavigation(null, navigation)))
+  setState(() => ObjectSelected.bind(null, navigation))
 // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [navigation])
+}, [navigation.id])
 
 
-  function ObjectSelected(navigation) {
-    switch (navigation) {
+
+  function ObjectSelected() {
+    switch (navigation.name) {
       case "textbox":
-        return <NavigationText canvas={canvas} animation={animation} />;
+        return <NavigationText animation={animation} />;
       case "image":
-        return <NavigationImages setSelectedField={setSelectedField} canvas={canvas} animation={animation} />;
+        return <NavigationImages setSelectedField={setSelectedField}  animation={animation} />;
       default:
         return <StyleNavigationComponents />;
     }

@@ -7,11 +7,11 @@ import { StyleTemplates } from "./style.components";
 
 
 
-const Templates = ({canvas}) => {
+const Templates = () => {
     const [isModalOpen, setModalOpen] = useState(false)
     return (
         <StyleTemplates>
-            {isModalOpen && <Modal close={setModalOpen} canvas={canvas}/>}
+            {isModalOpen && <Modal close={setModalOpen} />}
             <TextHeader text={"Templates"}/>
             <PrimaryBtn onClick={setModalOpen}>Create a template</PrimaryBtn>
             <div className="image-wrapper">

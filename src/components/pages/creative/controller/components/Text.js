@@ -4,17 +4,23 @@ import { PrimaryBtn } from "../../../../reusableUI/buttons/buttons.style";
 import { StyleText, StyleContent } from "./style.components";
 import TextHeader from "../../../../reusableUI/TextHeader";
 import { HeaderMd } from "../../../../reusableUI/typography";
+import uniqid from 'uniqid';
+import {useSelector} from 'react-redux'
+
 let headers = ['Hello from Paris', 'The Shape of the water', "The quick brown fox jumps over the lazy dog"]
 let descriptions = ["Return From the Starts", "One more Minute", "Please let us know", "The numbers of planets is very large"]
 
-const Content = ({list=[], canvas}) => {
+const Content = ({list=[]}) => {
+  const canvas = useSelector(state => state.canvas.canvas)
   const handleText = (text) => {
     let textBox = new fabric.Textbox(text, {
+      id: uniqid(),
       left: 100,
       top: 100,
-      fill: "black",
+      fill: "rgba(0, 0, 0, 1)",
       fontFamily: "Arial",
       textAlign: "center",
+      backgroundColor: 'rgba(255,255,255,1)'
     });
     canvas.add(textBox).setActiveObject(textBox);
   }
@@ -37,15 +43,14 @@ const Text = ({ canvas }) => {
       <PrimaryBtn
         onClick={() => {
           let textBox = new fabric.Textbox("hello world", {
+            id: uniqid(),
             left: 100,
             top: 100,
-            fill: "black",
+            fill: 'rgba(0, 0, 0, 1)',
             fontFamily: "Arial",
             textAlign: "center",
             backgroundColor: 'rgba(255,255,255,1)'
           });
-          // textBox.set('backgroundColor', 'rgb(255,255,255)')
-          // textBox.set('backgroundColor', 'rgba(0,200,0, 0.4)');
           canvas.add(textBox).setActiveObject(textBox);
         }}
       >

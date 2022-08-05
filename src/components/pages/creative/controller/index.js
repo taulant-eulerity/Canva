@@ -5,12 +5,11 @@ import { StyleController } from "./style.controller";
 import  Text  from "./components/Text";
 import  Images  from "./components/Images";
 import { animateOnSelect } from "../../../util/gsap";
-import ImageFilters from "./components/ImageFilters";
 import Templates from "./components/Templates";
-import Customize from "./components/Customize";
-import Graphics from "./components/Graphics";
-const Controller = ({ canvas, selectedField }) => {
+import Customize from "./components/customize";
+import Graphics from "./components/graphics";
 
+const Controller = ({selectedField, animation}) => {
 
   useLayoutEffect(() => {
      animateOnSelect("init-animation")
@@ -19,13 +18,12 @@ const Controller = ({ canvas, selectedField }) => {
 
   const Component = () => {
     switch(selectedField) {
-      case 'text': return <Text canvas={canvas} />
-      case 'images': return <Images  canvas={canvas}/>
-      case 'image:filters': return <ImageFilters  canvas={canvas}/>
-      case 'templates': return <Templates canvas={canvas}/>
-      case 'customize': return <Customize canvas={canvas}/>
-      case 'graphics': return <Graphics canvas={canvas} />
-      default: return <Text canvas={canvas} />
+      case 'text': return <Text />
+      case 'images': return <Images/>
+      case 'templates': return <Templates/>
+      case 'customize': return <Customize  animation={animation} />
+      case 'graphics': return <Graphics />
+      default: return <Text/>
     }
   }
   return (

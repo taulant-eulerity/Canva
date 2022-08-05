@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useRef } from "react";
 import styled from "styled-components";
 import { hexToRgbA } from "../../pages/creative/controller/controller.util";
 import { getLastValue } from "../../util/util";
-
+import {useSelector} from 'react-redux'
 const StyleColorPicker = styled.div`
   .color-wrapper {
     width: 35px;
@@ -12,10 +12,10 @@ const StyleColorPicker = styled.div`
   }
 `;
 
-const ColorPicker = ({ setValue, value, canvas, isFont }) => {
+const ColorPicker = ({ setValue, value, isFont, setOpacity, attr }) => {
+  const canvas = useSelector(state => state.canvas.canvas)
   const ref = useRef();
   const currentOpacity = useRef()
-
 
   const handleOnClick = () => {
     ref.current.click();
@@ -28,17 +28,20 @@ const ColorPicker = ({ setValue, value, canvas, isFont }) => {
       return
     }
 
-    let opacity  = getLastValue(currentOpacity.current.backgroundColor)
+    let prewColor = getLastValue(currentOpacity.current[attr])
     let updatedColor = getLastValue(hexToRgbA(e.target.value))
 
-    if(!opacity) return setValue(hexToRgbA(e.target.value));
-    updatedColor[updatedColor.length-1] = opacity[opacity.length-1]
+    if(!prewColor) return setValue(hexToRgbA(e.target.value));
+
+    setOpacity(Math.round(prewColor[prewColor.length-1] * 100))
+    updatedColor[updatedColor.length-1] = prewColor[prewColor.length-1]
+
     setValue(`rgba(${updatedColor.join(",")})`);
   };
 
   return (
     <>
-      <input onChange={handleOnChange} type='color' ref={ref} style={{ visibility: "hidden", opacity: "0", width: 0 }} />
+      <input onChange={handleOnChange} type='color' ref={ref} style={{ visibility: "hidden", opacity: 0, width: 0 }} />
       <StyleColorPicker>
           <div className="color-wrapper" onClick={handleOnClick} style={{ backgroundColor: value }} />
       </StyleColorPicker>

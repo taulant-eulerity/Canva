@@ -14,19 +14,6 @@ export const StyleNavigationComponents= styled.div`
         gap: 0.1rem;
         justify-content: space-between;
     }
-
-    .icons {
-        width: 120px;
-        display: grid;
-         grid-auto-flow: column;
-         justify-content: space-around;
-         align-items: center;
-         column-gap: 0.1rem;
-         border: 1px solid #DFDFDE;
-         padding: 0.2rem;
-         background-color: #F1F1F1;
-         border-radius: 5px;
-    }
     /* display: flex;
     align-items: center;
     justify-content: center; */

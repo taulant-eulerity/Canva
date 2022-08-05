@@ -5,6 +5,8 @@ import { gsap } from "gsap";
 import { HeaderMd } from "../reusableUI/typography";
 import MediaItem from "./Items";
 
+import {useSelector} from 'react-redux'
+
 import facebookCover from "../../assets/images/facebookCover.svg";
 import facebookPost from "../../assets/images/facebookPost.svg";
 import instagramPost from "../../assets/images/instagramPost.svg";
@@ -12,6 +14,7 @@ import presenation from "../../assets/images/presenation.svg";
 import socialMedia from "../../assets/images/socialMedia.svg";
 import twitterPost from "../../assets/images/twitterPost.svg";
 import youtube from "../../assets/images/youtube.svg";
+
 
 const StyleModalOverlay = styled.div`
   position: fixed;
@@ -73,7 +76,8 @@ const StyleModal = styled.div`
   }
 `;
 
-const Modal = ({close,canvas}) => {
+const Modal = ({close}) => {
+  const canvas = useSelector(state => state.canvas.canvas)
   let images = [
                 {icon: presenation, text: {title: 'Presantation', dimentions: '1024x768'}},
                 {icon: facebookCover, text: {title: 'Facebook Cover', dimentions: '1702x630'}},

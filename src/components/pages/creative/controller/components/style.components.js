@@ -58,10 +58,6 @@ export const StyleTemplates = styled.div`
 
 export const StyleText = styled.div``
 
-export const StyleCustomize = styled.div``
-
-
-
 //SUB
 export const StyleContent = styled.div`
   display: grid;

@@ -5,6 +5,6 @@ export const handleNavigation = (event, AObject) => {
       case 'image': return 'image'
       case 'group': return 'group'
       case 'activeSelection': return 'activeSelection'
-      default: return null
+      default: return 'canvas'
     }
   }

@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 
 import { StyleImages, StyleImageWrapper } from "../style.components";
 import { fabric } from "fabric";
-
+import uniqid from 'uniqid'
 const SVGLogos = ({ canvas }) => {
   const logos = ["https://eulerity-svg.s3.amazonaws.com/cocacola.svg", "https://eulerity-svg.s3.amazonaws.com/facebook.svg", "https://eulerity-svg.s3.amazonaws.com/google.svg", "https://eulerity-svg.s3.amazonaws.com/instagram.svg", "https://eulerity-svg.s3.amazonaws.com/pinterest.svg","https://eulerity-svg.s3.amazonaws.com/flyio.svg"];
  const loadRef = useRef(0)
@@ -14,6 +14,7 @@ const SVGLogos = ({ canvas }) => {
       svg.top = 50;
       svg.scaleToWidth(100);
       svg.scaleToHeight(100);
+      svg.id = uniqid()
       canvas.add(svg).setActiveObject(svg);;
       canvas.centerObject(svg);
       canvas.renderAll();

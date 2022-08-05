@@ -4,11 +4,11 @@ import { StyleFooter } from './style.footer'
 
 
 
-const Footer = ({canvas, animation, setAnimation}) => {
+const Footer = ({ animation, setAnimation}) => {
 
   return (
     <StyleFooter className='section footer'>
-       <Layers canvas={canvas}  animation={animation} setAnimation={setAnimation}/>
+       <Layers  animation={animation} setAnimation={setAnimation}/>
     </StyleFooter>
   )
 }
