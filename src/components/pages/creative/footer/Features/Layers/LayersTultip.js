@@ -104,7 +104,6 @@ const LayersTooltip = ({ animation }) => {
     return (
       <StyleLayersOrder>
         <div className="closing" onClick={() => animation.reverse()}>
-          {" "}
           <HeaderMd>Layers</HeaderMd> <FiX size={23} />
         </div>
         {objects.reverse().map((obj, index) => {

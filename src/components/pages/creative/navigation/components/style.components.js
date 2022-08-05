@@ -9,13 +9,4 @@ export const StyleNavigationComponents= styled.div`
     align-items: center;
     column-gap: 0.7rem;
     cursor: pointer;
-    .colors {
-        display: flex;
-        gap: 0.1rem;
-        justify-content: space-between;
-    }
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-    /* background-color: #DFDFDE; */
 `

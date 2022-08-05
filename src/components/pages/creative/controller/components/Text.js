@@ -10,8 +10,7 @@ import {useSelector} from 'react-redux'
 let headers = ['Hello from Paris', 'The Shape of the water', "The quick brown fox jumps over the lazy dog"]
 let descriptions = ["Return From the Starts", "One more Minute", "Please let us know", "The numbers of planets is very large"]
 
-const Content = ({list=[]}) => {
-  const canvas = useSelector(state => state.canvas.canvas)
+const Content = ({list=[], canvas}) => {
   const handleText = (text) => {
     let textBox = new fabric.Textbox(text, {
       id: uniqid(),
@@ -36,7 +35,8 @@ const Content = ({list=[]}) => {
 
 
 
-const Text = ({ canvas }) => {
+const Text = () => {
+  const canvas = useSelector(state => state.canvas.canvas)
   return (
     <StyleText>
       <TextHeader text={"Text"}/>
