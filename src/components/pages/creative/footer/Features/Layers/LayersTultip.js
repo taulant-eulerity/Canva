@@ -1,6 +1,6 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable array-callback-return */
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef,useState } from "react";
 import { FiX, FiPenTool } from "react-icons/fi";
 import { CgFormatText, CgImage } from "react-icons/cg";
 import { StyleElements, StyleLayersOrder, StyleLayersTooltip } from "./style.leayers";
@@ -18,6 +18,7 @@ const LayersTooltip = ({ animation }) => {
 
   const SctructureLayers = () => {
     const objects = canvas?.getObjects();
+    const [s, setS] = useState()
 
     useEffect(() => {
       listItems.current = document.querySelectorAll(".draggable");
@@ -26,6 +27,7 @@ const LayersTooltip = ({ animation }) => {
       });
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
     if (!objects) return <></>;
 
     function dragStart(e) {
@@ -56,7 +58,6 @@ const LayersTooltip = ({ animation }) => {
         dragSrcEl.current.innerHTML = this.innerHTML;
         this.innerHTML = e.dataTransfer.getData("text/html");
       }
-
       let dropedId = e.srcElement.id;
 
       let firstObjIdx = objects.findIndex((obj) => obj.index == dropedId);
@@ -79,8 +80,9 @@ const LayersTooltip = ({ animation }) => {
       let temp = copyObj[firstObjIdx];
       copyObj[firstObjIdx] = copyObj[secondObjIdx];
       copyObj[secondObjIdx] = temp;
-      canvas.renderAll();
+
       canvas._objects = copyObj.reverse();
+      canvas.requestRenderAll()
 
       return false;
     }
@@ -110,7 +112,7 @@ const LayersTooltip = ({ animation }) => {
           obj.index = index;
           if (obj.type === "image") {
             return (
-              <StyleElements key={index} id={index} className="draggable" draggable={true} onClick={() => handleOnClick(obj)}>
+              <StyleElements key={obj.id} id={index} className="draggable" draggable={true} onClick={() => handleOnClick(obj)}>
                 <CgImage style={{ marginRight: "0.5rem" }} size="23" color="#3C415C" />
                 <img style={{ borderRadius: "4px" }} height={"30px"} src={obj._element?.src} alt="ihm" />
               </StyleElements>
@@ -118,13 +120,13 @@ const LayersTooltip = ({ animation }) => {
           }
           if (obj.type === "textbox") {
             return (
-              <StyleElements key={index} id={index} className="draggable" draggable={true} onClick={() => handleOnClick(obj)}>
+              <StyleElements key={obj.id} id={index} className="draggable" draggable={true} onClick={() => handleOnClick(obj)}>
                 <CgFormatText style={{ marginRight: "0.5rem" }} size="25" color="#3C415C" /> {obj.text.length > 20 ? obj.text.slice(0, 20) + "..." : obj.text}
               </StyleElements>
             );
           }
           return (
-            <StyleElements key={index} id={index} className="draggable" draggable={true} onClick={() => handleOnClick(obj)}>
+            <StyleElements key={obj.id} id={index} className="draggable" draggable={true} onClick={() => handleOnClick(obj)}>
               <FiPenTool size="22" style={{ marginRight: "0.5rem" }} color="#3C415C" />
               SVG
             </StyleElements>
