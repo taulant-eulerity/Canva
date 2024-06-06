@@ -87,9 +87,6 @@ const LayersTooltip = ({ animation }) => {
       return false;
     }
 
-    function soo() {
-      return "1"
-    }
 
     function dragEnd(e) {
       Array.from(listItems.current).forEach((item) => {
