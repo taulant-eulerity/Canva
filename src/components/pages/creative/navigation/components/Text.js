@@ -7,6 +7,7 @@ import { TbItalic, TbBold } from "react-icons/tb";
 import FontPicker from "./FontPicker";
 import { StyleNavigationComponents } from "./style.components";
 import { StyleIcons } from "../../controller/components/customize/style.customize";
+import TestComponent from "./TestComponent";
 
 const NavigationText = () => {
   const canvas = useSelector((state) => state.canvas.canvas);
@@ -43,7 +44,6 @@ const NavigationText = () => {
 
 
 
-
   return (
     <StyleNavigationComponents>
       <FontPicker />
@@ -52,6 +52,7 @@ const NavigationText = () => {
           <TbBold onClick={onBold} color='#3C415C' size='24' />
           <TbItalic onClick={onItalic} color='#3C415C' size='23'/>
         </StyleIcons>
+        <TestComponent />
     </StyleNavigationComponents>
   );
 };
