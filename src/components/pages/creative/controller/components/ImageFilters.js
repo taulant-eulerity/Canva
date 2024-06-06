@@ -16,14 +16,6 @@ const ImageFilters = () => {
         {filterObject: new fabric.Image.filters.Technicolor(), filterName: 'Technicolor'},
         {filterObject: new fabric.Image.filters.Invert(), filterName: 'Invert'}
     ]
-
-
-    const c = function(num) {
-        return function(num2) {
-            return num + num2
-        }
-    }
-
     const handleFilter = (name) => {
         const FO = filters.find(f => f.filterName === name)
         if(!FO) return
