@@ -12,8 +12,9 @@ import { handleNavigation } from "./editor.util";
 import getSelectedOpbjectType from "../../../redux/actions/navigation";
 import getCanvas from "../../../redux/actions/canvas";
 import {useSelector} from 'react-redux'
+import { getFilter } from "../../util/util";
 const Editor = () => {
-   
+
   const [selectedField, setSelectedField] = useState("text");
   const canvas = useSelector(state => state.canvas.canvas)
   const _D = useDispatch();
@@ -24,6 +25,8 @@ const Editor = () => {
   });
 
   let [animation, setAnimation] = useState({});
+
+  getFilter({a: "100"})
 
   useEffect(() => {
     if (!canvas) return;

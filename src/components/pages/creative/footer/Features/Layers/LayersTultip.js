@@ -87,6 +87,7 @@ const LayersTooltip = ({ animation }) => {
       return false;
     }
 
+
     function dragEnd(e) {
       Array.from(listItems.current).forEach((item) => {
         addEventsDragAndDrop(item);
