@@ -10,3 +10,13 @@ export const StyleNavigationComponents= styled.div`
     column-gap: 0.7rem;
     cursor: pointer;
 `
+
+export const StyleTest = styled.div`
+    padding: 8px;
+    background-color: wheat;
+    border-radius: 10px;
+    transition: all 0.5s;
+    &:hover {
+        background-color: antiquewhite;
+    }
+`
