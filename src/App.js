@@ -5,6 +5,7 @@ import AnotherBadComponent from "./components/util/AnotherBadComponent";
 import Count from "./components/util/Count";
 import Timer from "./components/util/Timer";
 import Profile from "./components/util/Profile";
+import Config from "./components/util/Config";
 function App() {
   return (
     <div className="App">
@@ -14,6 +15,7 @@ function App() {
       <Count />
       <Timer />
       <Profile />
+      <Config />
     </div>
   );
 }
