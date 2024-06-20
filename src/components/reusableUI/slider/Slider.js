@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import React from 'react'
 export const StyleInput = styled.div`
   height: 30px;
   .container {
